@@ -8,21 +8,21 @@ const Feature = () => {
                 <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
                     <Link href="/" aria-label="Article">
                         <img
-                            src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260"
+                            src="https://i.ibb.co/brJwfDV/food-6.jpg"
                             className="object-cover w-full h-64 rounded"
                             alt=""
                         />
                     </Link>
                     <div className="py-5">
                         <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                            13 Jul 2020
+                            13 Jun 2023
                         </p>
                         <Link
                             href="/"
                             aria-label="Article"
                             className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
                         >
-                            <p className="text-2xl font-bold leading-5">Diving to the deep</p>
+                            <p className="text-2xl font-bold leading-5">Japanese Burger</p>
                         </Link>
                         <p className="mb-4 text-gray-700">
                             Sed ut perspiciatis unde omnis iste natus error sit sed quia
@@ -94,26 +94,33 @@ const Feature = () => {
                                 <p className="font-semibold">81</p>
                             </Link>
                         </div>
+                        <Link to='/cart'>
+                            <button type="button"
+                                className="w-full py-2 font-bold border rounded border-gray-800
+                             text-gray-800 hover:text-white hover:bg-violet-400 mt-5">
+                                Add to Cart
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
                     <Link href="/" aria-label="Article">
                         <img
-                            src="https://images.pexels.com/photos/1576937/pexels-photo-1576937.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;w=500"
+                            src="https://i.ibb.co/yRp5hSB/food-4.jpg"
                             className="object-cover w-full h-64 rounded"
                             alt=""
                         />
                     </Link>
                     <div className="py-5">
                         <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                            4 Nov 2020
+                            4 Mar 2023
                         </p>
                         <Link
                             href="/"
                             aria-label="Article"
                             className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
                         >
-                            <p className="text-2xl font-bold leading-5">Conquer the World</p>
+                            <p className="text-2xl font-bold leading-5">Indian Pasta</p>
                         </Link>
                         <p className="mb-4 text-gray-700">
                             Sed ut perspiciatis unde omnis iste natus error sit sed quia
@@ -185,19 +192,24 @@ const Feature = () => {
                                 <p className="font-semibold">81</p>
                             </Link>
                         </div>
+                        <button type="button"
+                            className="w-full py-2 font-bold border rounded border-gray-800
+                             text-gray-800 hover:text-white hover:bg-violet-400 mt-5">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
                 <div className="overflow-hidden transition-shadow duration-300 bg-white rounded">
                     <Link href="/" aria-label="Article">
                         <img
-                            src="https://images.pexels.com/photos/2123755/pexels-photo-2123755.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                            src="https://i.ibb.co/fHkN1qr/food-1.jpg"
                             className="object-cover w-full h-64 rounded"
                             alt=""
                         />
                     </Link>
                     <div className="py-5">
                         <p className="mb-2 text-xs font-semibold text-gray-600 uppercase">
-                            28 Dec 2020
+                            28 Jan 2023
                         </p>
                         <Link
                             href="/"
@@ -205,7 +217,7 @@ const Feature = () => {
                             className="inline-block mb-3 text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
                         >
                             <p className="text-2xl font-bold leading-5">
-                                Explore the beautiful
+                                Turkey Pizza
                             </p>
                         </Link>
                         <p className="mb-4 text-gray-700">
@@ -278,6 +290,11 @@ const Feature = () => {
                                 <p className="font-semibold">81</p>
                             </Link>
                         </div>
+                        <button type="button"
+                            className="w-full py-2 font-bold border rounded border-gray-800
+                             text-gray-800 hover:text-white hover:bg-violet-400 mt-5">
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>

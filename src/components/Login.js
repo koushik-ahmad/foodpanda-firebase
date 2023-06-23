@@ -1,13 +1,71 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContext';
+import { toast } from 'react-toastify';
+
 
 const Login = () => {
+    const { signIn, googleSignIn, resetPassword } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                toast.error(error.message)
+            });
+
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                toast.error(error.message)
+            });
+
+    }
+
+    const handleReset = (email) => {
+        resetPassword(email)
+            .then(() => {
+                toast.success('Password reset email sent')
+            })
+            .catch(error => {
+                console.error(error.message);
+                toast.error(error.message)
+            });
+
+    }
+
+
     return (
         <div className="w-full mx-auto my-10 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 border-2">
             <h1 className="text-2xl font-bold text-center pb-4">Please Login</h1>
-            <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+            <form
+                onSubmit={handleSubmit}
+                noValidate=""
+                action=""
+                className="space-y-6 ng-untouched ng-pristine ng-valid">
                 <div className="space-y-1 text-sm">
-                    <label for="email" className="block text-gray-600">Email</label>
+                    <label htmlFor="email" className="block text-gray-600">Email</label>
                     <input
                         type="email"
                         name="email"
@@ -16,7 +74,7 @@ const Login = () => {
                         className="w-full px-4 py-3 rounded-md border border-gray-500 bg-gray-50 text-gray-800 focus:border-violet-600" />
                 </div>
                 <div className="space-y-1 text-sm pb-4">
-                    <label for="password" className="block text-gray-600">Password</label>
+                    <label htmlFor="password" className="block text-gray-600">Password</label>
                     <input
                         type="password"
                         name="password"
@@ -24,7 +82,11 @@ const Login = () => {
                         placeholder="Type Your Password"
                         className="w-full px-4 py-3 rounded-md border border-gray-500 bg-gray-50 text-gray-800 focus:border-violet-600" />
                     <div className="flex justify-end text-xs text-gray-600">
-                        <Link rel="noopener noreferrer" to="/">Forgot Password?</Link>
+                        <Link
+                            onClick={handleReset}
+                            to=""
+                            rel="noopener noreferrer">Forgot Password?
+                        </Link>
                     </div>
                 </div>
                 <button
@@ -39,6 +101,7 @@ const Login = () => {
             </div>
             <div className="flex justify-center space-x-4">
                 <button
+                    onClick={handleGoogleSignIn}
                     aria-label="Log in with Google"
                     className="p-3 rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">

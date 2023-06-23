@@ -1,22 +1,83 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContext';
+import { toast } from 'react-toastify';
+
 
 const Signup = () => {
+    const [error, setError] = useState(null);
+    const { createUser, googleSignIn, emailVerify } = useContext(AuthContext);
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+
+        if (password.length < 6) {
+            setError("Password should be 6 Character")
+            return
+        }
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => {
+                console.log(error)
+            });
+
+        // emailVerify()
+        //     .then(() => {
+        //         toast.success('Please check your email')
+        //     })
+        //     .catch(error => {
+        //         toast.error(error.message)
+        //     });
+
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error)
+            });
+
+    }
+
+
+
+
     return (
         <div className="w-full mx-auto my-10 max-w-md p-8 space-y-3 rounded-xl bg-gray-50 text-gray-800 border-2">
             <h1 className="text-2xl font-bold text-center pb-4">Sign up</h1>
-            <form novalidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+            <form
+                onSubmit={handleSubmit}
+                noValidate=""
+                action=""
+                className="space-y-6 ng-untouched ng-pristine ng-valid"
+            >
                 <div className="space-y-1 text-sm">
-                    <label for="username" className="block text-gray-600">User Name</label>
+                    <label htmlFor="name" className="block text-gray-600">User Name</label>
                     <input
-                        type="username"
-                        name="username"
-                        id="username"
+                        type="name"
+                        name="name"
+                        id="name"
                         placeholder="User Name "
                         className="w-full px-4 py-3 rounded-md border border-gray-500 bg-gray-50 text-gray-800 focus:border-violet-600" />
                 </div>
                 <div className="space-y-1 text-sm">
-                    <label for="email" className="block text-gray-600">Email</label>
+                    <label htmlFor="email" className="block text-gray-600">Email</label>
                     <input
                         type="email"
                         name="email"
@@ -25,14 +86,18 @@ const Signup = () => {
                         className="w-full px-4 py-3 rounded-md border border-gray-500 bg-gray-50 text-gray-800 focus:border-violet-600" />
                 </div>
                 <div className="space-y-1 text-sm ">
-                    <label for="password" className="block text-gray-600">Password</label>
+                    <label htmlFor="password" className="block text-gray-600">Password</label>
                     <input
                         type="password"
                         name="password"
                         id="password"
                         placeholder="Your Password"
                         className="w-full px-4 py-3 rounded-md border border-gray-500 bg-gray-50 text-gray-800 focus:border-violet-600" />
+
+                    <p className='text-red-600'>{error}</p>
+
                 </div>
+
                 <button
                     className="block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600">
                     Sign in
@@ -45,6 +110,7 @@ const Signup = () => {
             </div>
             <div className="flex justify-center space-x-4">
                 <button
+                    onClick={handleGoogleSignIn}
                     aria-label="Log in with Google"
                     className="p-3 rounded-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-5 h-5 fill-current">

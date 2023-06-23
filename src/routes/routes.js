@@ -5,11 +5,17 @@ import Feature from "../components/Feature";
 import Pricing from "../components/Pricing";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import ErrorPage from "../components/ErrorPage";
+import Profile from "../components/Profile";
+import Cart from "../components/Cart";
+import Order from "../components/Order";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -25,7 +31,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/pricing',
-                element: <Pricing></Pricing>
+                element: <PrivateRoute><Pricing></Pricing></PrivateRoute>
+            },
+            {
+                path: '/profile',
+                element: <Profile></Profile>
             },
             {
                 path: '/login',
@@ -34,6 +44,14 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup></Signup>
+            },
+            {
+                path: '/cart',
+                element: <PrivateRoute><Cart></Cart></PrivateRoute>
+            },
+            {
+                path: '/order',
+                element: <PrivateRoute><Order></Order></PrivateRoute>
             },
         ]
     }

@@ -50,11 +50,11 @@ const Home = () => {
                                 </svg>
                                 <span className="relative">The</span>
                             </span>{' '}
-                            quick, brown fox jumps over a lazy dog
+                            Fastest Food Delivery in Your City
                         </h2>
                         <p className="text-base text-gray-700 md:text-lg">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                            accusantium doloremque rem aperiam, eaque ipsa quae.
+                            Foodpanda is a popular food delivery platform that operates in many cities worldwide.
+                            It partners with numerous restaurants to offer a wide range of cuisines and dishes for delivery.
                         </p>
                     </div>
                     <div>
@@ -62,7 +62,7 @@ const Home = () => {
                             to="/feature"
                             className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
                         >
-                            Get started
+                            Order Now
                         </Link>
                     </div>
                 </div>

@@ -31,25 +31,24 @@ const Pricing = () => {
                         </svg>
                         <span className="relative">Choose</span>
                     </span>{' '}
-                    your way. Advance everyday.
+                    your food. Advance everyday.
                 </h2>
                 <p className="text-base text-gray-700 md:text-lg">
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                    accusantium doloremque rem aperiam, eaque ipsa quae.
+                    Foodpanda is a popular food delivery platform that operates in many cities worldwide.
                 </p>
             </div>
             <div className="grid max-w-md gap-10 row-gap-8 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
                 <div className="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow">
                     <div className="relative w-full h-48">
                         <img
-                            src="https://images.pexels.com/photos/3184305/pexels-photo-3184305.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                            src="https://i.ibb.co/NFxypNr/food-3.jpg"
                             className="object-cover w-full h-full rounded-t"
                             alt="Plan"
                         />
                     </div>
                     <div className="flex flex-col justify-between flex-grow p-8 border border-t-0 rounded-b">
                         <div>
-                            <div className="text-lg font-semibold">Basic</div>
+                            <div className="text-lg font-semibold">Special Pasta</div>
                             <p className="text-sm text-gray-900">
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                                 doloremque.
@@ -59,24 +58,24 @@ const Pricing = () => {
                             </div>
                         </div>
                         <Link
-                            href="/"
+                            to="/order"
                             className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
                         >
-                            Buy Basic
+                            Buy Now
                         </Link>
                     </div>
                 </div>
                 <div className="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow">
                     <div className="relative w-full h-48">
                         <img
-                            src="https://images.pexels.com/photos/3183181/pexels-photo-3183181.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                            src="https://i.ibb.co/MsvXTWt/food-5.jpg"
                             className="object-cover w-full h-full rounded-t"
                             alt="Plan"
                         />
                     </div>
                     <div className="flex flex-col justify-between flex-grow p-8 border border-t-0 rounded-b">
                         <div>
-                            <div className="text-lg font-semibold">Advanced</div>
+                            <div className="text-lg font-semibold">Special Pasta</div>
                             <p className="text-sm text-gray-900">
                                 A flower in my garden, a mystery in my panties. Heart attack
                                 never was so close.
@@ -89,21 +88,21 @@ const Pricing = () => {
                             href="/"
                             className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
                         >
-                            Buy Advanced
+                            Buy Now
                         </Link>
                     </div>
                 </div>
                 <div className="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow">
                     <div className="relative w-full h-48">
                         <img
-                            src="https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+                            src="https://i.ibb.co/6JrtyY5/food-2.jpg"
                             className="object-cover w-full h-full rounded-t"
                             alt="Plan"
                         />
                     </div>
                     <div className="flex flex-col justify-between flex-grow p-8 border border-t-0 rounded-b">
                         <div>
-                            <div className="text-lg font-semibold">Pro</div>
+                            <div className="text-lg font-semibold">Couple Pizza</div>
                             <p className="text-sm text-gray-900">
                                 We never had the chance to. Maybe it was the eleven months he
                                 spent in the womb.
@@ -116,7 +115,7 @@ const Pricing = () => {
                             href="/"
                             className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
                         >
-                            Buy Pro
+                            Buy Now
                         </Link>
                     </div>
                 </div>

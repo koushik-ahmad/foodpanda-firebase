@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/UserContext';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -66,24 +68,51 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/login"
-                                aria-label="About us"
-                                title="Login"
+                                to="/profile"
+                                aria-label="Product pricing"
+                                title="Profile"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Login
+                                {user?.email ? user.email : 'Profile'}
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/signup"
-                                className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
-                                aria-label="Sign up"
-                                title="Sign up"
-                            >
-                                Sign up
-                            </Link>
-                        </li>
+
+                        {user?.uid ?
+                            <li>
+                                <Link
+                                    onClick={logOut}
+                                    to="/login"
+                                    aria-label="About us"
+                                    title="Log Out"
+                                    className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"                                >
+                                    Log Out
+                                </Link>
+                            </li>
+                            :
+                            <>
+                                <li>
+                                    <Link
+                                        to="/login"
+                                        aria-label="About us"
+                                        title="Login"
+                                        className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    >
+                                        Login
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        to="/signup"
+                                        className="inline-flex items-center justify-center h-10 px-6 font-medium tracking-wide text-white bg-purple-600 hover:bg-purple-500 transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none"
+                                        aria-label="Sign up"
+                                        title="Sign up"
+                                    >
+                                        Sign up
+                                    </Link>
+                                </li>
+                            </>
+                        }
+
                     </ul>
                     <div className="lg:hidden">
                         <button
@@ -92,7 +121,7 @@ const Navbar = () => {
                             className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline"
                             onClick={() => setIsMenuOpen(true)}
                         >
-                            <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
+                            <svg className="w-5 text-white" viewBox="0 0 24 24">
                                 <path
                                     fill="currentColor"
                                     d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
@@ -115,7 +144,7 @@ const Navbar = () => {
                                             <Link
                                                 href="/"
                                                 aria-label="Company"
-                                                title="Company"
+                                                title="Food Panda"
                                                 className="inline-flex items-center"
                                             >
                                                 <svg
@@ -134,7 +163,7 @@ const Navbar = () => {
                                                     <rect x="14" y="11" width="7" height="12" />
                                                 </svg>
                                                 <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                                    Company
+                                                    Food Panda
                                                 </span>
                                             </Link>
                                         </div>
@@ -158,7 +187,7 @@ const Navbar = () => {
                                         <ul className="space-y-4">
                                             <li>
                                                 <Link
-                                                    href="/"
+                                                    href="/home"
                                                     aria-label="Our product"
                                                     title="Home"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -168,9 +197,9 @@ const Navbar = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    href="/"
+                                                    to="/feature"
                                                     aria-label="Our product"
-                                                    title="Our product"
+                                                    title="Features"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Features
@@ -178,18 +207,28 @@ const Navbar = () => {
                                             </li>
                                             <li>
                                                 <Link
-                                                    href="/"
+                                                    to="/pricing"
                                                     aria-label="Product pricing"
-                                                    title="Product pricing"
+                                                    title="Pricing"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Pricing
                                                 </Link>
                                             </li>
                                             <li>
+                                                <Link
+                                                    to="/profile"
+                                                    aria-label="Product pricing"
+                                                    title="Profile"
+                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                    Profile
+                                                </Link>
+                                            </li>
+                                            <li>
                                                 <div className='flex flex-row gap-10 p-2'>
                                                     <Link
-                                                        href="/"
+                                                        to="/login"
                                                         aria-label="About us"
                                                         title="Login"
                                                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md text-white bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none"
@@ -197,7 +236,7 @@ const Navbar = () => {
                                                         Login
                                                     </Link>
                                                     <Link
-                                                        href="/"
+                                                        to="/signup"
                                                         className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide transition duration-200 rounded shadow-md text-white bg-purple-600 hover:bg-purple-500 focus:shadow-outline focus:outline-none"
                                                         aria-label="Sign up"
                                                         title="Sign up"
